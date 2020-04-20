@@ -19,13 +19,16 @@ var time = document.getElementById("time");
 var endGame = document.getElementById("end-screen");
 // target the final score for user after finish quiz
 var score = document.getElementById("final-score");
+// where the user submit scores
 var submit = document.getElementById("submit")
-
+var userInitial = document.getElementById("initials")
+// where their highscores will be displayed
+//var highscores = document.getElementById("highscores")
 //setting the global var
 var currentIndex  = 0;
 var currentTime = 75;
 var interval;
-
+var savedHighScore = [];
 // on click for the start button
 startQuiz.addEventListener("click", function(){
     //.classList and .add adds css class ("d-none") to the start screen itself
@@ -181,3 +184,22 @@ var questions = [
         answer: "One for All"
     }
 ];
+
+// I need a function for storing the user score and then for them to be able to see it on the highscores button
+
+function submitInitial() {
+    var initText = userInitial.value.trim()
+     if (initText === "") {
+        return;
+     } 
+     savedHighScore.push(initText);
+     userInitial.value = "";
+     storeHighScore ();
+     submitInitial()
+};
+
+
+function storeHighScore () {
+    localStorage.setItem("savedHighScore",JSON.stringify(savedHighScore));
+    console.log(savedHighScore);
+}
