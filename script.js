@@ -1,20 +1,26 @@
-// targeting elements on html
+// the start screen, button 
 var startQuiz = document.getElementById("start");
 var start = document.getElementById("startScreen");
+
+
+// target choices for the question, target the right answer section in question section
 var questionsScreen = document.getElementById("questionsScreen");
 var questionTitle = document.getElementById("question-title");
-
-// these are the var for the choices buttons for the question gotta target that
 var a = document.getElementById("button-choice1");
 var b = document.getElementById("button-choice2");
 var c = document.getElementById("button-choice3");
 var d = document.getElementById("button-choice4");
 var answer = document.getElementById("answer");
-var score = document.getElementById("final-score");
-//var highscore = document.getElementById("highscores");
+
+// gotta target the time to display the time they have left
 var time = document.getElementById("time");
+
+// End Game Section
 var endGame = document.getElementById("end-screen");
+// target the final score for user after finish quiz
+var score = document.getElementById("final-score");
 var submit = document.getElementById("submit")
+
 //setting the global var
 var currentIndex  = 0;
 var currentTime = 75;
@@ -55,6 +61,7 @@ function timer() {
 }
 // function for the clicks of the answer choices
 function enableClicks() {
+    // set addEventListener for the specified var that targeted the specified button, so in this case a var targeting for the first choice button is going to be "listened" for the click to excecute the function of generating the quiz.
     a.addEventListener('click', function() {
         generateQuiz(a);
     })
@@ -71,14 +78,19 @@ function enableClicks() {
 
 // function to generate next question 
 function generateQuestion(index) {
+
     if(index === questions.length) {
         clearInterval(interval);
+        //.classList .add adds the CSS class "d-none" which is the class for the question section, to questionContainer making it appear
         questionContainer.classList.add("d-none");
+        // .classList .remove removes the CSS class for the end game section which is also "d-none", makes it not appeat during the question section 
         endGame.classList.remove("d-none");
+        // the score is displayed to be the time of the timer
         return score.innerHTML = time.innerHTML;
     }
-     // setting the targeted element of the question and answer to some other variables below
+     // setting the targeted element of the question and answer to it's actual object below
     questionTitle.innerHTML = questions[index].question;
+    // .innerHTML displays the questions array and the options for answers in the specified variable for the choices buttons
     a.innerHTML = questions[index].options.a; 
     b.innerHTML = questions[index].options.b; 
     c.innerHTML = questions[index].options.c;
@@ -88,27 +100,24 @@ function generateQuestion(index) {
 
  //main function for the quiz
 function generateQuiz(UserChoice) {
-    //set correct answer var equal to questions array answer property
+    //set correct answer var equal to questions array and within that array the answer property is the correct answer
     let correctAnswer = questions[currentIndex].answer;
-    // if user selected answer equal to the value of the correctAnswer then display correct text
+    // if user selected options equal to the value of the correctAnswer then display correct text
     if(UserChoice.innerHTML === correctAnswer) {
        answer.innerHTML = 'Correct'; 
-       // if the answer selected by user is not correct, user input not equal to correctAnswer then display incorrect text
+       // if the options selected by user is not correct, user input not equal to correctAnswer then display incorrect text
     } else {
         answer.innerHTML = 'Incorrect';
-        //subtract 10 secs from the timer
+        //then subtract 10 secs from the timer
         currentTime = currentTime - 10;
     }
-    //set the current object in array to go through loop via ++
+    // ++ incremental operator for the currentIndex to go through loop
     currentIndex++;
-     // pass the current object through main generateQuestion function
+     // wrong answer will pass currentIndex to the function generateQuestion again
     generateQuestion(currentIndex);
 }
-// if user chooses the correct answer, display correct
-// else display incorrect and -10 sec on timer
-//update current index & go back to generateQuestion function
 
- // setting the questions and answers and correct answer with the variables below, questions are created as objects in an array
+ // setting the questions and answers and correct answer with the variables below, questions are created as objects in an array, within each objects exist multiple properties that we set to being the correct answer and the options choices for the specific question
 var questions = [
     {
         question: "What was the first anime series?",
@@ -129,7 +138,7 @@ var questions = [
             c: "England",
             d: "France",
         },
-        correctAnswer: "Germany"
+        answer: "Germany"
     },
     {
         question: "Which of these classic anime films wasn't directed by Hayao Miyazaki?",
@@ -162,7 +171,7 @@ var questions = [
             answer: "Bleach"
     },
     {
-        question: "Final question!!!! In 'My Hero Academia' the anime featured as the background of this quiz page. What is the name of the quirk that was passed down to Deku from the superhero All Might?!!!!!",
+        question: "Final Question!!!! In 'My Hero Academia' the anime featured as the background of this quiz page; What is the name of the quirk that was passed down to Deku from the superhero All Might?!!!!!",
         options: {
             a: "All for One",
             b: "One for All",
