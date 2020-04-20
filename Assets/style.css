@@ -1,0 +1,40 @@
+body {
+    background-image: url(https://images4.alphacoders.com/834/thumb-1920-834908.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.direction {
+    font-family: 'Acme', sans-serif;
+    text-align: center;
+}
+
+.border-bottom {
+    font-family: 'Bangers', cursive;
+}
+
+h3 {
+    text-align: center;
+}
+
+.options {
+    text-align: left;
+}
+
+
+
+.hide {
+    display: none;
+    visibility: hidden;
+}
+
+.timer {
+    border: 1px solid black;
+    background-color: red;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+    font-size: 20pt;
+    color: seashell;
+}

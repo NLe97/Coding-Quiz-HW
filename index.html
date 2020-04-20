@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Quiz</title>
+    <!--Link to bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!--Link to my CSS stylesheet-->
+    <link rel="stylesheet" type="text/css" href="Assets/style.css">
+    <!--My google font link-->
+    <link href="https://fonts.googleapis.com/css2?family=Acme&family=Bangers&family=Lobster&family=Open+Sans&display=swap" rel="stylesheet">
+</head>
+
+<body class="d-flex flex-column h-100">
+    <header>
+        <div class="nav-scroller py-1 mb-2">
+            <div class="nav d-flex justify-content-between">
+                <input class="btn btn-danger" id="highscores" type="submit" value="View Highscores">
+                <div class="timer">Time: <span id="time">75</span></div>
+            </div>
+        </div>
+    </header>
+    <section id="startScreen" class="row justify-content-center">
+        <div class ="col-md-5 bg-light border p-lg-3">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="border-bottom pb-3">Anime Trivia Challenge</h3>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="direction">
+                            <p> Hello Anime fans, I challenge y'all to answer some anime trivia, try to improve your score by answering each question correctly, get a question wrong a there will be a time penalty (10 seconds off the timer)! So are you ready to test your anime knowledge!!!</p>
+                        </div>
+                        <div class="direction">
+                            <input id="start" class="btn btn-danger" type="submit" value="Start Quiz">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </section>
+        
+    <!--question section-->
+    <div id="questionContainer" class ="d-none">
+        <section id="questionsScreen" class="row justify-content-center">
+            <div class="col-md-5 bg-light border p-lg-3">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 id="question-title"></h3>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="direction">
+                            <div id ="options" class="direction">
+                                <ol>
+                                    <li><button id="button-choice1"></button></li>
+                                    <li><button id="button-choice2"></button></li>
+                                    <li><button id="button-choice3"></button></li>
+                                    <li><button id="button-choice4"></button></li>
+                                </ol>
+                            </div>
+                            <div>
+                                <p id="answer"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!--end game section-->
+    <div id="end-screen" class="d-none">
+        <section id="endGame" class="row justify-content-center">
+            <div class="col-md-5 bg-light border p-lg-3">
+                <div class ="row">
+                    <div class="col-md-12">
+                        <h3>All Done!</h3>
+                        <p>Your final score is <span id="final-score"></span>.</p>
+                        <p>
+                            Enter initials: <input type="text" id="initials" max="3" />
+                            <button id="submit">Submit</button>
+                        </p>
+         
+       
+                    </div>
+                </div>
+            </div>
+        </section>
+       
+    </div>                    
+    <!--Link to JavaScript-->
+    <script src="./Assets/script.js"></script>
+</body>
+</html>
+            
